@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Stnc_Uploader>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Stnc_Uploader>
+    </modules>
+</config> 

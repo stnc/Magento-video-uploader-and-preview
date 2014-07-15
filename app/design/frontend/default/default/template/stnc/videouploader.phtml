@@ -1,0 +1,43 @@
+<?php
+
+$sku =$this->getSku();
+$resource= Mage::getSingleton('core/resource');
+$readConnection = $resource->getConnection('core_read');
+$result= $readConnection->fetchOne('SELECT count(sku) FROM stnc_videoupload WHERE status=1 and sku="'.$sku.'"'); 
+if ($result>=1){				
+$sql='SELECT videoupload_id as id FROM stnc_videoupload WHERE status=1 and sku="'.$sku.'"';
+ $videos= $readConnection->fetchAll($sql);
+
+ 
+?>	
+<script type="text/javascript" src="<?php echo Mage::getBaseUrl('js');?>stnc/jquery.fancybox.pack.js"></script>
+<link href="<?php echo Mage::getBaseUrl('skin');?>frontend/default/default/css/jquery.fancybox.css" rel="stylesheet" type="text/css" media="screen" />	
+
+
+<?php foreach ($videos as $row) { ?>
+
+<a href="<?php echo Mage::getBaseUrl();?>stncuploader/video/index/id/<?php echo $row['id']?>" id="stncvarious">
+<img title="Video izle" src="<?php echo Mage::getBaseUrl('skin');?>frontend/default/default/images/videoizle.jpg" style="margin-bottom: 6px;"></a>
+
+<?php } ?>
+
+
+
+
+<script type="text/javascript">
+
+	jQuery(document).ready(function() {	
+jQuery("#stncvarious").fancybox({
+	'width'				: '30%',
+		'height'			: '50%',
+        'autoScale'     	: false,
+        'transitionIn'		: 'none',
+		'transitionOut'		: 'none',
+		'type'				: 'iframe'
+	});
+		});
+</script>
+
+<?php
+}
+?>
