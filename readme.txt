@@ -1,3 +1,6 @@
+Magento video uploader and preview module 
+
+magento video upload ve video önizleme modülü
 //app/design/frontend/<YOUR TEMPLATE>/default/template/catalog/product/view.phtml 
 
 after to <?php echo $this->getChildHtml('media') ?> 
